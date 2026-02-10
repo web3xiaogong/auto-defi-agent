@@ -1,0 +1,37 @@
+# Auto-DeFi Agent
+# Requirements for BNB Chain Hackathon
+
+# Core
+# openclaw>=0.1.0  # Part of OpenClaw system, not pip install
+web3>=6.0.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+
+# Data
+pandas>=2.0.0
+numpy>=1.24.0
+
+# HTTP
+requests>=2.28.0
+httpx>=0.24.0
+
+# Utilities
+python-dateutil>=2.8.0
+
+# QR Code
+qrcode[pil]>=7.4.0
+
+# Cryptography
+cryptography>=41.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# Development
+black>=23.0.0
+flake8>=6.0.0
+
+# Solidity (optional - for contract compilation)
+# brownie>=1.20.0
+# hardhat>=2.0.0

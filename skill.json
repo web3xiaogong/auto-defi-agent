@@ -1,0 +1,70 @@
+{
+  "name": "auto-defi-agent",
+  "version": "1.0.0",
+  "description": "Smart DeFi Yield Optimization Assistant for BNB Chain",
+  "main": "src/main.py",
+  "author": "OpenClaw Agent",
+  "license": "MIT",
+  "openclaw": {
+    "skill": true,
+    "emoji": "🤖",
+    "keywords": [
+      "defi",
+      "yield",
+      "bsc",
+      "bnb",
+      "opbnb",
+      "pancakeswap",
+      "automation",
+      "trading"
+    ],
+    "permissions": [
+      "read:env",
+      "execute:python",
+      "network:bsc",
+      "network:opbnb"
+    ],
+    "commands": {
+      "scan": {
+        "description": "Scan for DeFi yield opportunities",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "chain": {
+              "type": "string",
+              "enum": ["BSC", "opBNB"],
+              "default": "BSC"
+            },
+            "min_apy": {
+              "type": "number",
+              "default": 5.0
+            }
+          }
+        }
+      },
+      "status": {
+        "description": "Show agent status"
+      },
+      "strategy": {
+        "description": "Generate yield optimization strategy"
+      },
+      "risk": {
+        "description": "Analyze opportunity risk"
+      },
+      "execute": {
+        "description": "Execute yield strategy"
+      }
+    }
+  },
+  "dependencies": {
+    "python": ">=3.10"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

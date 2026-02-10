@@ -1,0 +1,15 @@
+#!/bin/bash
+# Auto-DeFi Agent CLI Wrapper for OpenClaw
+# Usage: auto-defi-agent <command> [options]
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PYTHON_CMD="${PYTHON_CMD:-python3}"
+
+# Check for Python
+if ! command -v $PYTHON_CMD &> /dev/null; then
+    echo "❌ Python not found. Please install Python 3.10+"
+    exit 1
+fi
+
+# Run CLI
+exec $PYTHON_CMD "$SCRIPT_DIR/src/cli.py" "$@"

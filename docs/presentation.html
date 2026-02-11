@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-DeFi Agent - Good Vibes Only Hackathon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            border-bottom: 3px solid #e94560;
+        }
+        .slide:nth-child(even) {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #00d9ff;
+        }
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #00ff88;
+        }
+        p {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        .highlight {
+            color: #00ff88;
+            font-weight: bold;
+        }
+        .emoji {
+            font-size: 2em;
+            margin: 10px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .feature h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 40px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 4em;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        .stat-label {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .tech {
+            background: rgba(0,217,255,0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+        }
+        .code {
+            background: #0d1117;
+            padding: 30px;
+            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1em;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+        }
+        .step {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .step-number {
+            background: #00ff88;
+            color: #1a1a2e;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .demo-links {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .demo-link {
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #1a1a2e;
+            padding: 20px 40px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .demo-link:hover {
+            transform: scale(1.05);
+        }
+        .contact {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .contact p {
+            font-size: 1.5em;
+        }
+        .contact .emoji {
+            font-size: 3em;
+            margin: 20px;
+        }
+        .final-slide {
+            text-align: center;
+        }
+        .final-slide h1 {
+            font-size: 5em;
+        }
+        .prize {
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        @media print {
+            .slide {
+                page-break-after: always;
+                min-height: auto;
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title -->
+    <div class="slide">
+        <div class="emoji">🤖🌉💰</div>
+        <h1>Auto-DeFi Agent</h1>
+        <p>智能 DeFi 收益优化助手</p>
+        <p style="color: #00d9ff;">Good Vibes Only Hackathon - Agent Track</p>
+        <p style="margin-top: 40px; font-size: 1.2em;">开发者: @web3xiaogong</p>
+        <p style="font-size: 1em; color: #888;">2026-02-10</p>
+    </div>
+
+    <!-- Slide 2: Problem -->
+    <div class="slide">
+        <h2>🎯 解决的问题</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <h3>DeFi 机会发现</h3>
+                <p>多链收益率机会分散，人工监控成本高</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>投资决策</h3>
+                <p>缺乏数据支持，决策凭感觉</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📤</div>
+                <h3>策略分享</h3>
+                <p>好的策略无法方便分享给他人</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⛓️</div>
+                <h3>透明度</h3>
+                <p>链上操作不透明，难以验证</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>跟单交易</h3>
+                <p>无法跟随成功交易者的策略</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>自动化</h3>
+                <p>需要人工监控，效率低下</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Solution -->
+    <div class="slide">
+        <h2>💡 解决方案</h2>
+        <p style="font-size: 1.8em; margin-bottom: 40px;">Auto-DeFi Agent - 智能 DeFi 生态系统</p>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Agent</h3>
+                <p>OpenClaw 框架集成</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔮</div>
+                <h3>ML 预测</h3>
+                <p>APY 走势预测</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌉</div>
+                <h3>多链支持</h3>
+                <p>BSC, opBNB, ETH, ARB</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>跟单系统</h3>
+                <p>复制顶级交易者</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📤</div>
+                <h3>策略分享</h3>
+                <p>二维码分享链接</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⛓️</div>
+                <h3>链上证明</h3>
+                <p>决策透明可验证</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Tech Stack -->
+    <div class="slide">
+        <h2>🛠️ 技术栈</h2>
+        <div class="tech-stack">
+            <div class="tech">🤖 OpenClaw</div>
+            <div class="tech">🐍 Python 3.10+</div>
+            <div class="tech">⛓️ Web3.py</div>
+            <div class="tech">📝 Solidity</div>
+            <div class="tech">🧪 pytest</div>
+            <div class="tech">📊 Pandas/NumPy</div>
+            <div class="tech">🌐 BSC/opBNB</div>
+            <div class="tech">💻 CLI/Terminal</div>
+        </div>
+        <div class="stats" style="margin-top: 60px;">
+            <div class="stat">
+                <div class="stat-number">41</div>
+                <div class="stat-label">测试通过</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Python 文件</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">核心功能</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4</div>
+                <div class="stat-label">支持的链</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Demo 1 - ML Prediction -->
+    <div class="slide">
+        <h2>🔮 功能演示: ML 预测</h2>
+        <p>基于历史数据的 APY 趋势预测</p>
+        <div class="code">
+            <pre>python3 src/ml/apy_predictor.py --pool "CAKE-USDT" --points 14</pre>
+        </div>
+        <p style="color: #00ff88;">✓ 预测 APY 走势</p>
+        <p style="color: #00ff88;">✓ 置信度评分</p>
+        <p style="color: #00ff88;">✓ 买卖建议</p>
+    </div>
+
+    <!-- Slide 6: Demo 2 - Strategy Sharing -->
+    <div class="slide">
+        <h2>📤 功能演示: 策略分享</h2>
+        <p>生成分享码和二维码</p>
+        <div class="code">
+            <pre>python3 src/sharing/strategy_share.py --pool "CAKE-USDT" --apy 15.0 --qr</pre>
+        </div>
+        <p style="color: #00ff88;">✓ 短分享码</p>
+        <p style="color: #00ff88;">✓ 二维码生成</p>
+        <p style="color: #00ff88;">✓ 签名验证</p>
+    </div>
+
+    <!-- Slide 7: Demo 3 - Multi-chain -->
+    <div class="slide">
+        <h2>🌉 功能演示: 多链扫描</h2>
+        <p>跨链比较收益机会</p>
+        <div class="code">
+            <pre>python3 src/multi_chain/__init__.py --scan</pre>
+        </div>
+        <p style="color: #00ff88;">✓ BSC ✓ opBNB ✓ Ethereum ✓ Arbitrum</p>
+        <p style="color: #00ff88;">✓ 找出最佳 APY</p>
+    </div>
+
+    <!-- Slide 8: Demo 4 - Copy Trading -->
+    <div class="slide">
+        <h2>👥 功能演示: 跟单系统</h2>
+        <p>跟随顶级交易者</p>
+        <div class="code">
+            <pre>python3 src/copy_trading/copy_trading_manager.py --demo</pre>
+        </div>
+        <p style="color: #00ff88;">✓ 交易者排行榜</p>
+        <p style="color: #00ff88;">✓ 自动复制订单</p>
+        <p style="color: #00ff88;">✓ 收益分成</p>
+    </div>
+
+    <!-- Slide 9: How to Run -->
+    <div class="slide">
+        <h2>🚀 如何运行</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>克隆项目</strong>
+                    <p style="font-size: 1em; margin: 5px 0 0;">git clone https://github.com/YOUR_USERNAME/auto-defi-agent.git</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>安装依赖</strong>
+                    <p style="font-size: 1em; margin: 5px 0 0;">pip install -r requirements.txt</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>运行测试</strong>
+                    <p style="font-size: 1em; margin: 5px 0 0;">python3 -m pytest tests/ -v</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>启动 Agent</strong>
+                    <p style="font-size: 1em; margin: 5px 0 0;">python3 src/main.py</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Summary -->
+    <div class="slide final-slide">
+        <h2>📊 项目亮点</h2>
+        <div class="features" style="margin-bottom: 40px;">
+            <div class="feature">
+                <h3>🤖 OpenClaw 集成</h3>
+                <p>完整的 Agent 框架支持</p>
+            </div>
+            <div class="feature">
+                <h3>🔮 ML 预测</h3>
+                <p>数据驱动的决策</p>
+            </div>
+            <div class="feature">
+                <h3>🌉 多链聚合</h3>
+                <p>发现最佳收益</p>
+            </div>
+        </div>
+        <p class="highlight">完全开源 · 链上透明 · 社区驱动</p>
+        <div class="contact">
+            <div class="emoji">📧🐙📱</div>
+            <p>GitHub: https://github.com/YOUR_USERNAME/auto-defi-agent</p>
+            <p>Telegram: @web3xiaogong</p>
+        </div>
+        <div class="prize">
+            🏆 Good Vibes Only Hackathon - Agent Track
+        </div>
+    </div>
+
+    <!-- Slide 11: Thank You -->
+    <div class="slide final-slide">
+        <h1>🙏 感谢观看！</h1>
+        <p style="font-size: 2em; margin: 40px 0;">Auto-DeFi Agent</p>
+        <p>智能 DeFi 收益优化助手</p>
+        <div class="demo-links">
+            <a href="https://github.com/YOUR_USERNAME/auto-defi-agent" class="demo-link">GitHub</a>
+            <a href="docs/DEMO_GUIDE.md" class="demo-link">文档</a>
+        </div>
+        <p style="margin-top: 40px; color: #888;">提交截止: 2026-02-19</p>
+    </div>
+
+</body>
+</html>

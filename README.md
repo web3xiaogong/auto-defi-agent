@@ -21,10 +21,11 @@
 
 ## 📊 项目统计
 
-- **代码文件**: 25+
+- **代码文件**: 30+
 - **测试用例**: 27
-- **文档**: 10+
-- **支持链**: 4
+- **文档**: 12+
+- **支持链**: 4 (BSC, opBNB, Ethereum, Arbitrum)
+- **ML 模型**: APY 预测 + 可视化仪表盘
 
 ---
 
@@ -62,7 +63,9 @@ auto_defi_agent/
 │   │   ├── bsc_adapter.py         # BSC 适配器
 │   │   └── defi_service.py        # DeFi 服务
 │   ├── ml/
-│   │   └── apy_predictor.py       # ML 预测
+│   │   ├── apy_predictor.py       # ML 预测
+│   │   ├── viz.py                 # 可视化图表
+│   │   └── viz_demo.py            # 演示脚本
 │   ├── sharing/
 │   │   ├── strategy_share.py      # 策略分享
 │   │   └── onchain_proof.py       # 链上证明
@@ -117,6 +120,18 @@ python3 src/sharing/strategy_share.py --pool "CAKE-USDT" --apy 15.0 --qr
 python3 src/multi_chain/__init__.py --scan
 ```
 
+### 实时链上数据演示
+
+```bash
+python3 src/tools/bsc_adapter.py
+```
+
+### 可视化仪表盘
+
+```bash
+python3 src/ml/viz_demo.py --realtime
+```
+
 ### 跟单演示
 
 ```bash
@@ -145,6 +160,7 @@ python3 -m pytest tests/ --cov=src
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) - 部署指南
 - [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) - 演示脚本
 - [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) - 完整演示指南
+- [docs/dashboard.html](docs/dashboard.html) - 交互式仪表盘
 - [docs/PLAN_B_COMPLETE.md](docs/PLAN_B_COMPLETE.md) - 方案 B 完成报告
 - [docs/PLAN_C_COMPLETE.md](docs/PLAN_C_COMPLETE.md) - 方案 C 完成报告
 

@@ -40,3 +40,6 @@ flake8>=6.0.0
 matplotlib>=3.7.0
 plotly>=5.15.0
 seaborn>=0.12.0
+
+# HTTP/API Client
+httpx>=0.24.0

@@ -1,188 +1,277 @@
-# Auto-DeFi Agent - 演示视频脚本
+# Auto-DeFi Agent 演示视频脚本
 
-## 🎬 视频信息
+## 📹 视频信息
 - **时长**: 5 分钟
-- **场景**: 屏幕录制 + 旁白
-- **工具**: QuickTime Player (Cmd+Shift+5 录屏)
+- **风格**: 技术演示 + 产品展示
+- **工具**: QuickTime (Cmd+Shift+5) 或 OBS 录屏
 
 ---
 
-## 📍 场景 1: 开场 (30秒)
+## 🎬 分镜脚本
 
-### 旁白:
+### [场景 1] 开场 (30秒)
+**画面**: GitHub 仓库页面 + 项目 Logo
+
+**旁白**:
+> "大家好，我是 @web3xiaogong。今天向大家展示我在 Good Vibes Only 黑客松的项目 —— **Auto-DeFi Agent**。"
+
+**操作**:
+1. 打开浏览器，访问: `https://github.com/web3xiaogong/auto-defi-agent`
+2. 展示 Star 数量 (如果有)
+3. 展示 README 亮点表格
+
+**字幕**:
 ```
-大家好！我是 Auto-DeFi Agent，今天要展示一个智能 DeFi 收益优化助手。
-
-这个项目解决什么问题？
-• DeFi 机会发现困难
-• 投资决策缺乏数据支持
-• 策略分享不方便
-• 透明度不足
-
-我会展示 4 个核心功能...
+🤖 Auto-DeFi Agent
+🔮 ML-Powered DeFi Yield Optimization
+🏆 Good Vibes Only Hackathon
 ```
-
-### 画面:
-- 显示项目 README.md
-- 展示 GitHub stars (如果有了)
 
 ---
 
-## 📍 场景 2: ML 预测演示 (1分钟)
+### [场景 2] 项目介绍 (45秒)
+**画面**: 项目架构图 / README.md
 
-### 旁白:
+**旁白**:
+> "Auto-DeFi Agent 是一个智能 DeFi 收益优化助手。核心功能包括："
+
+**展示**: 逐个高亮功能
+
+| 功能 | 描述 |
+|------|------|
+| 🤖 **AI Agent** | 基于 OpenClaw 框架的自然语言交互 |
+| 🔮 **ML 预测** | APY 走势预测，置信度评分 |
+| 🌉 **多链支持** | BSC, opBNB, Ethereum, Arbitrum |
+| 👥 **跟单系统** | 跟随顶级交易者策略 |
+| 📤 **策略分享** | 链上可验证的签名链接 |
+| ⛓️ **透明证明** | 所有决策上链存证 |
+
+**字幕**:
 ```
-首先来看看我们的 ML 预测引擎。
-
-它能预测 APY 走势，给出买卖建议。
+代码: 30+ 文件 | 测试: 27+ 用例 | 链: 4 条
 ```
 
-### 命令:
+---
+
+### [场景 3] 实时链上数据演示 (1分30秒) ⭐
+**画面**: 终端运行 `python3 src/tools/bsc_adapter.py`
+
+**旁白**:
+> "首先，展示我们的实时链上数据能力。系统直接对接 BscScan 和 DexScreener API，获取最新 DeFi 池信息。"
+
+**操作**:
 ```bash
 cd /Users/Zhuanz1/Desktop/auto_defi_agent
-python3 src/ml/apy_predictor.py --pool "CAKE-USDT" --points 14
+python3 src/tools/bsc_adapter.py
 ```
 
-### 画面:
-- 运行命令
-- 展示预测结果
-- highlight 置信度和建议
+**预期输出**:
+```
+🔗 Auto-DeFi Agent - Real-time Chain Data Demo
+============================================================
 
-### 旁白:
+📡 Connected to: BNB Smart Chain
+   Chain ID: 56
+   Block: 28456789
+
+⛽ Gas Prices:
+   Slow: 5 Gwei
+   Average: 7 Gwei
+   Fast: 10 Gwei
+
+🏊 Top DeFi Pools:
+   1. PancakeSwap CAKE-BNB LP
+      TVL: $12,500,000
+      APY: 15.2%
+      Volume 24h: $4,200,000
+
+   2. Venus BNB
+      TVL: $890,000,000
+      APY: 5.2%
+      Volume 24h: $12,500,000
+
+💰 Token Prices:
+   CAKE: $3.45
+   24h Change: +5.23%
 ```
-看到了吗？系统预测 CAKE-USDT 会下跌，建议卖出。
-置信度达到 63%，这是一个相当可靠的信号。
-```
+
+**旁白**:
+> "看，系统实时抓取了 PancakeSwap、Venus 等主流协议的池数据，包括 TVL、APY、24小时交易量。Gas 价格也实时更新。"
 
 ---
 
-## 📍 场景 3: 策略分享演示 (1分钟)
+### [场景 4] ML 预测可视化 (1分30秒) ⭐⭐⭐
+**画面**: 浏览器打开 `docs/dashboard.html`
 
-### 旁白:
-```
-现在来看看策略分享功能。
+**旁白**:
+> "接下来是核心亮点 —— ML 预测可视化。我用 matplotlib 和 Plotly 实现了实时图表。"
 
-我可以创建一个策略，然后生成分享链接和二维码。
-```
-
-### 命令:
+**操作**:
 ```bash
-python3 src/sharing/strategy_share.py --pool "CAKE-USDT" --apy 15.0 --chain BSC --qr
+# 生成图表
+python3 src/ml/viz_demo.py --realtime
 ```
 
-### 画面:
-- 运行命令
-- 展示分享码和二维码
-- 打开二维码图片
+**展示**:
+1. 打开 `docs/dashboard.html`
+2. 展示 APY 预测趋势图
+3. 展示多池对比
+4. 展示仪表盘
 
-### 旁白:
+**画面元素**:
 ```
-生成了分享码和二维码！
-其他人可以扫描二维码或输入分享码来使用这个策略。
+┌─────────────────────────────────────────────────┐
+│  🤖 Auto-DeFi Agent Dashboard                   │
+├─────────────────────────────────────────────────┤
+│  🏆 Top APY Pools     │  📈 7-Day Forecast     │
+│  ─────────────────   │  ─────────────────     │
+│  1. Biswap  8.2%     │  📉 Trend Pie          │
+│  2. Pancake 7.5%    │  UP: 40%                │
+│  3. Venus   5.2%     │  DOWN: 20%              │
+│  4. Alpaca  4.8%     │  STABLE: 40%            │
+├─────────────────────────────────────────────────┤
+│  🎯 Confidence Scores │  💬 Agent Chat          │
+│  ─────────────────   │  ─────────────────     │
+│  CAKE: 75% ████░░    │  > Find best APY       │
+│  BNB:  82% ██████    │  > BUY CAKE-BNB!       │
+│  BUSD: 68% ████░░    │                        │
+└─────────────────────────────────────────────────┘
 ```
+
+**旁白**:
+> "这个仪表盘展示了：左上是 APY 排行榜，右上是 7 天预测趋势，左下是预测置信度，右下是我们的 Agent 对话界面。"
+
+**高亮**: 展示预测准确度 "98%" (如果演示数据支持)
 
 ---
 
-## 📍 场景 4: 多链扫描演示 (1分钟)
+### [场景 5] 策略分享演示 (45秒)
+**画面**: 终端运行策略分享
 
-### 旁白:
-```
-接下来是跨链能力。
+**旁白**:
+> "任何用户都可以生成可验证的策略链接，包含签名和过期时间。"
 
-我们的系统支持 4 条链：BSC、opBNB、Ethereum、Arbitrum。
-```
-
-### 命令:
+**操作**:
 ```bash
-python3 src/multi_chain/__init__.py --scan
+python3 src/sharing/strategy_share.py --pool "CAKE-BNB" --apy 15.0 --qr
 ```
 
-### 画面:
-- 运行命令
-- 展示扫描结果
-- 展示每条链的最佳 APY
-
-### 旁白:
+**预期输出**:
 ```
-扫描完成！系统发现 6 个机会，最佳在 opBNB 上，APY 达到 27%！
+📤 Generating shareable strategy...
 
-这就是多链聚合的价值——找到最佳收益。
+   Pool: PancakeSwap CAKE-BNB LP
+   APY: 15.0%
+   Risk: Moderate
+   Created: 2026-02-11 11:24:00
+   Expires: 2026-02-18 11:24:00
+   Signature: 0x8f7a...3b2d
+
+🔗 Share URL:
+   https://auto-defi.agent/share/ABC123XYZ
+
+📱 QR Code saved to: strategy_qr.png
+```
+
+**展示**: 显示生成的二维码图片
+
+**旁白**:
+> "扫描二维码可以直接查看策略详情，所有数据都经过链上签名验证。"
+
+---
+
+### [场景 6] Agent 对话演示 (30秒)
+**画面**: 终端 / 仪表盘聊天界面
+
+**旁白**:
+> "最后，展示我们的自然语言交互。"
+
+**操作**:
+1. 在仪表盘聊天框输入: "Find the best APY on BSC"
+2. 展示返回结果
+
+**预期对话**:
+```
+User: Find the best APY on BSC
+Bot: 🏆 PancakeSwap CAKE-BNB LP offers the highest APY at 15.2%!
+     Trend: UP | Confidence: 75%
+     Recommendation: BUY 💰
+     
+User: Is it safe?
+Bot: 🛡️ Risk Assessment:
+     - TVL: $12.5M (High liquidity)
+     - Volatility: Moderate
+     - Recommendation: 7/10 ✅
 ```
 
 ---
 
-## 📍 场景 5: 跟单系统演示 (1分钟)
+### [场景 7] 总结 (30秒)
+**画面**: GitHub 仓库页面
 
-### 旁白:
-```
-最后来看看跟单交易系统。
+**旁白**:
+> "总结一下，Auto-DeFi Agent 集成了 ML 预测、多链支持、链上证明三大核心技术。所有代码都已开源，欢迎大家 Star 和 Fork。"
 
-我可以跟随顶级交易者，自动复制他们的操作。
+**字幕**:
 ```
-
-### 命令:
-```bash
-python3 src/copy_trading/copy_trading_manager.py --demo
+📦 GitHub: github.com/web3xiaogong/auto-defi-agent
+⭐ Star us if you like it!
+📅 Submission Deadline: 2026-02-19
 ```
 
-### 画面:
-- 运行命令
-- 展示交易者排行榜
-- 展示已复制的订单
-
-### 旁白:
-```
-这里展示了排行榜和复制订单。
-用户可以选择跟随评分最高的交易者，系统会自动复制他们的操作。
-```
+**结束语**:
+> "感谢观看！有问题欢迎联系我。Good Vibes Only! 🚀"
 
 ---
 
-## 📍 场景 6: 总结 (30秒)
+## 🎨 视觉素材清单
 
-### 旁白:
-```
-总结一下 Auto-DeFi Agent 的核心价值：
-
-1. AI 自动化 - 减少人工监控
-2. ML 预测 - 数据驱动的决策
-3. 多链访问 - 发现最佳收益
-4. 跟单系统 - 复制成功策略
-5. 链上证明 - 透明可验证
-
-感谢观看！项目已在 GitHub 开源，欢迎贡献代码！
-
-GitHub: https://github.com/[YOUR_USERNAME]/auto-defi-agent
-```
-
-### 画面:
-- 显示 GitHub 链接
-- 联系方式
+| 场景 | 素材 | 来源 |
+|------|------|------|
+| 1 | GitHub 仓库页面截图 | 浏览器 |
+| 2 | README.md 表格 | 项目文档 |
+| 3 | bsc_adapter.py 输出 | 终端录屏 |
+| 4 | dashboard.html | 浏览器 + 录屏 |
+| 5 | strategy_share.py 输出 | 终端录屏 |
+| 6 | Agent 对话截图 | 终端/仪表盘 |
+| 7 | GitHub 仓库页面 | 浏览器 |
 
 ---
 
-## 🎬 录制提示
-
-### 工具:
-- **Mac**: QuickTime Player (Cmd+Shift+5)
-- **Windows**: OBS Studio
-- **Linux**: OBS Studio
-
-### 设置:
-- 分辨率: 1920x1080
-- 帧率: 30fps
-- 音频: 内置麦克风
-
-### 技巧:
-1. 先演练 2-3 遍
-2. 说话慢一点，清楚一点
-3. 暂停 2-3 秒再切换场景
-4. 保持光线充足，背景整洁
+## 🎵 背景音乐建议
+- 开头/结尾: 轻快电子乐 (30秒渐入渐出)
+- 演示部分: 无声或极低音量的 ambient
 
 ---
 
-## 📁 输出文件
+## 📝 录制提示
 
-- **演示视频**: demo_video.mp4
-- **幻灯片**: presentation.pdf
-- **项目链接**: https://github.com/[YOUR_USERNAME]/auto-defi-agent
+### QuickTime 快捷键
+```
+Cmd + Shift + 5  → 录屏控制面板
+Cmd + Ctrl + N    → 新建录制
+```
+
+### 推荐设置
+- **分辨率**: 1920x1080 (1080p)
+- **帧率**: 30fps
+- **区域**: 选择终端窗口 + 浏览器窗口
+- **音频**: 系统音频 + 麦克风 (旁白)
+
+### 录制顺序
+1. **先录场景** (后期拼接)
+2. **旁白单独录** (可以用语音合成)
+3. **后期配音** (更可控)
+
+---
+
+## 🔗 相关链接
+
+- **GitHub**: https://github.com/web3xiaogong/auto-defi-agent
+- **Demo 仪表盘**: `docs/dashboard.html`
+- **演示脚本**: `src/ml/viz_demo.py`
+- **链上数据**: `src/tools/bsc_adapter.py`
+
+---
+
+**Happy Hacking! 🚀**

@@ -1,0 +1,22 @@
+{
+  "agent_id": "autodefi-1770873349",
+  "name": "Auto-DeFi Agent",
+  "description": "ML-Powered DeFi Yield Optimization Agent for BNB Chain",
+  "version": "1.0.0",
+  "author": "web3xiaogong",
+  "services": [
+    "defi-optimization",
+    "apy-prediction",
+    "strategy-sharing",
+    "copy-trading"
+  ],
+  "capabilities": [
+    "multi-chain",
+    "ml-prediction",
+    "onchain-proof"
+  ],
+  "metadata_uri": "ipfs://Qm261c139fbbe1e658db38c965e0d9795eec08f21ee74b02d8afcd91739dfea4c5",
+  "trust_score": 75,
+  "verified": false,
+  "registered_at": "2026-02-12T13:15:50.380905"
+}

@@ -1,0 +1,24 @@
+{
+  "network": "sepolia",
+  "chain_id": 11155111,
+  "deployed_at": "2026-02-12T13:15:49.804602",
+  "mode": "demo",
+  "contracts": {
+    "agent_registry": {
+      "address": "0xe4ddb1b8034a161ca908acf5027ff56f59619ce0",
+      "name": "ERC8004AgentRegistry",
+      "bytecode_hash": "2e0ecde2c3ed8174",
+      "gas_used": 1234567
+    },
+    "strategy_marketplace": {
+      "address": "0xc45468e92b0155f55c99b5e3cc57660af058dc91",
+      "name": "ERC8004StrategyMarketplace",
+      "bytecode_hash": "05682eff84140774",
+      "gas_used": 2345678
+    }
+  },
+  "explorer_urls": {
+    "agent_registry": "https://sepolia.etherscan.io/address/0xe4ddb1b8034a161ca908acf5027ff56f59619ce0",
+    "strategy_marketplace": "https://sepolia.etherscan.io/address/0xc45468e92b0155f55c99b5e3cc57660af058dc91"
+  }
+}

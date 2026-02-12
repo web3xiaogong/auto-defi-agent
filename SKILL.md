@@ -1,320 +1,179 @@
----
-name: auto-defi-agent
-description: Smart DeFi Yield Optimization Assistant for BNB Chain. Monitor APY, analyze risks, and execute yield strategies on BSC and opBNB.
-metadata:
-  {
-    "openclaw": {
-      "emoji": "🤖",
-      "requires": {
-        "bins": ["python3"]
-      },
-      "install": [
-        {
-          "id": "pip-deps",
-          "kind": "pip",
-          "packages": ["web3", "pandas", "python-dotenv", "requests"],
-          "label": "Install Python dependencies (web3, pandas, requests)"
-        }
-      ],
-      "skills": {
-        "description": "Auto-DeFi Agent for BSC/opBNB yield optimization",
-        "parameters": {
-          "properties": {
-            "action": {
-              "enum": ["scan", "status", "strategy", "risk", "execute"],
-              "description": "Action to perform"
-            },
-            "chain": {
-              "enum": ["BSC", "opBNB"],
-              "description": "Blockchain network"
-            },
-            "min_apy": {
-              "description": "Minimum APY threshold",
-              "type": "number"
-            },
-            "auto_execute": {
-              "description": "Automatically execute trades",
-              "type": "boolean"
-            }
-          },
-          "required": ["action"]
-        }
-      }
-    },
-    "author": "OpenClaw Agent",
-    "version": "1.0.0",
-    "license": "MIT",
-    "repository": ""
-  }
----
+# Auto-DeFi Agent OpenClaw Skill
 
-# Auto-DeFi Agent Skill 🤖
-
-Smart DeFi Yield Optimization Assistant for BNB Chain
-
-## Description
-
-This skill integrates the **Auto-DeFi Agent** for BSC and opBNB networks. It helps you:
-
-- 📊 **Monitor** real-time APY across DeFi protocols
-- 🎯 **Identify** high-yield opportunities
-- 📈 **Analyze** risks with automated scoring
-- ⚡ **Execute** yield optimization strategies (with approval)
-
-## Quick Start
-
-```bash
-# Scan for opportunities
-/auto-defi-agent scan --chain BSC --min-apy 10
-
-# Check agent status
-/auto-defi-agent status
-
-# Get strategy recommendation
-/auto-defi-agent strategy --chain BSC
-
-# Analyze risk of best opportunity
-/auto-defi-agent risk --chain BSC
-
-# Execute strategy (requires approval)
-/auto-defi-agent execute --chain BSC
-```
-
-## Examples
-
-### Scan for High-APY Pools
-
-```
-You: Scan for DeFi opportunities on BSC with minimum 15% APY
-Agent: 
-> Fetching pools from DeFi Llama...
-> Found 23 pools meeting criteria
-> Top opportunity: CAKE-USDT at 24.5% APY
-> TVL: $2.5M | Risk Score: 0.72 (LOW)
-> Recommendation: EXECUTE
-```
-
-### Check Current Status
-
-```
-You: What's the agent status?
-Agent:
-> State: IDLE
-> Running: True
-> Opportunities Found: 47
-> Transactions: 3
-> Last Check: 2026-02-10T20:00:00
-> Total Profit: $15.42
-```
-
-### Get Strategy
-
-```
-You: Generate a strategy for BSC
-Agent:
-> Best: PANCAKE-WBNB at 18.2% APY
-> Risk Analysis:
->   - TVL Score: HIGH (+0.3)
->   - Protocol: Known (+0.2)
->   - APY Factor: Medium (-0.1)
-> Overall: 0.75 (LOW RISK)
-> Recommendation: SWAP 100 USDT → WBNB → Stake in Pool
-```
-
-## Configuration
-
-### Required Environment Variables
-
-```bash
-# BSC RPC
-BSC_RPC=https://bsc-dataseed.binance.org/
-
-# Wallet (optional - for transactions)
-WALLET_ADDRESS=0x...
-WALLET_PRIVATE_KEY=0x...
-
-# Telegram notifications (optional)
-TELEGRAM_BOT_TOKEN=xxx
-TELEGRAM_CHAT_ID=xxx
-```
-
-### OpenClaw Integration
-
-Add to your `~/.openclaw/openclaw.json`:
+## 📋 Skill 配置
 
 ```json
 {
-  "skills": {
-    "auto-defi-agent": {
-      "enabled": true,
-      "config": {
-        "chain": "BSC",
-        "min_apy": 5.0,
-        "auto_execute": false
-      }
+  "name": "auto-defi-agent",
+  "version": "1.0.0",
+  "description": "ML-Powered DeFi Yield Optimization Agent",
+  "author": "web3xiaogong",
+  "channels": ["telegram", "discord", "whatsapp", "imessage"],
+  "models": ["claude-opus-4", "gpt-4", "minimax-m2.1"],
+  "permissions": [
+    "read:wallet",
+    "execute:swap",
+    "read:defi-data",
+    "write:strategy"
+  ],
+  "commands": [
+    {
+      "name": "scan",
+      "description": "Scan DeFi opportunities across chains",
+      "usage": "scan --chain bsc --min-apy 10"
+    },
+    {
+      "name": "predict",
+      "description": "Get APY predictions with ML",
+      "usage": "predict CAKE-BNB"
+    },
+    {
+      "name": "trade",
+      "description": "Execute DeFi strategies",
+      "usage": "trade --pool CAKE-BNB --amount 100"
+    },
+    {
+      "name": "share",
+      "description": "Share strategy with signature",
+      "usage": "share --pool CAKE-BNB --apy 15.0"
     }
-  }
+  ]
 }
 ```
 
-## Technical Architecture
+## 🚀 使用方法
 
-```
-┌─────────────────────────────────────────┐
-│         OpenClaw Agent Skill             │
-├─────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐│
-│  │ Scanner │→ │Strategy │→ │ Analyzer││
-│  └─────────┘  └─────────┘  └─────────┘│
-│       │              │            │      │
-│       └─────────────┼────────────┘      │
-│                     │                   │
-│       ┌─────────────▼────────────┐       │
-│       │   BSC / opBNB Adapter   │       │
-│       │   (web3.py)             │       │
-│       └─────────────────────────┘       │
-└─────────────────────────────────────────┘
+### 1. 安装 Skill
+```bash
+# 在 OpenClaw 中
+skill install auto-defi-agent
 ```
 
-## Commands
+### 2. 配置钱包
+```bash
+# 设置钱包地址
+defi set wallet <WALLET_ADDRESS>
 
-### scan
-Scan DeFi pools for opportunities.
-
-```
-/auto-defi-agent scan --chain BSC --min-apy 10 [--auto-execute]
-```
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `chain` | string | BSC | Network to scan |
-| `min-apy` | number | 5.0 | Minimum APY % |
-| `auto-execute` | boolean | false | Auto-execute best strategy |
-
-### status
-Show current agent status and metrics.
-
-```
-/auto-defi-agent status
+# 设置 RPC (可选)
+defi set rpc bsc <BSC_RPC_URL>
 ```
 
-Output:
-- Agent state (IDLE/MONITORING/EXECUTING)
-- Opportunities found
-- Transaction history
-- Performance metrics
-
-### strategy
-Generate yield optimization strategy.
-
+### 3. 开始使用
 ```
-/auto-defi-agent strategy --chain BSC
+@agent scan --min-apy 10
+@agent predict CAKE-BNB
+@agent trade --pool CAKE-BNB --amount 100 --slippage 1
+@agent share --pool CAKE-BNB --apy 15.0
 ```
 
-Returns:
-- Best opportunity
-- Risk analysis
-- Recommended action
-- Expected return
+## 🔧 核心功能
 
-### risk
-Analyze risk of specific or best opportunity.
-
-```
-/auto-defi-agent risk --chain BSC [--pool POOL_ADDRESS]
+### 1. 多链扫描
+```python
+# 扫描 BSC, opBNB, Ethereum, Arbitrum
+defi scan --chain all --min-apy 10 --limit 20
 ```
 
-Risk Factors:
-- TVL (higher = safer)
-- Protocol reputation
-- APY stability
-- Historical performance
-
-### execute
-Execute a yield strategy (requires approval).
-
-```
-/auto-defi-agent execute --chain BSC --pool ADDRESS --amount 100
+### 2. ML 预测
+```python
+# APY 走势预测
+defi predict CAKE-BNB --days 7
 ```
 
-Safety:
-- Requires explicit approval
-- Shows transaction details before signing
-- Estimates gas costs
-- Allows setting slippage
+### 3. 策略执行
+```python
+# 自动最优路径兑换
+defi swap BNB CAKE --amount 1.0 --slippage 0.5
 
-## Use Cases
-
-### 1. Daily APY Monitoring
-
-```
-You: Check for any pools above 20% APY
-Agent scans, finds 3 opportunities, shows details
+# 质押到高 APY 池
+defi stake CAKE-BNB --amount 10
 ```
 
-### 2. Portfolio Rebalancing
+### 4. 策略分享
+```python
+# 生成可验证的分享链接
+defi share --pool CAKE-BNB --apy 15.0 --days 7
 
-```
-You: Rebalance my stablecoin holdings
-Agent finds best yield, suggests swap strategy
-```
-
-### 3. Gas-Optimized Trading
-
-```
-You: Execute when gas < 10 gwei
-Agent monitors gas, executes when optimal
+# 输出：
+# 🔗 https://auto-defi.agent/share/ABC123
+# 📱 QR Code 生成
+# ✅ Signature: 0x8f7a...
 ```
 
-## Safety Features
+### 5. 跟单交易
+```python
+# 查看顶级交易者
+defi leaders --chain bsc --limit 10
 
-| Feature | Description |
-|----------|-------------|
-| 🛡️ Risk Scoring | 0-1 risk score for each opportunity |
-| 💰 Slippage Control | Max 1% by default, configurable |
-| ⛽ Gas Monitoring | Wait for low gas periods |
-| 📊 Position Limits | Max position size configurable |
-| 🔔 Notifications | Telegram alerts for opportunities |
+# 跟单
+defi follow 0x1234... --amount 100 --copy-ratio 0.5
+```
 
-## Hackathon Context
+## 🔐 安全特性
 
-This skill was built for **Good Vibes Only: OpenClaw Edition** hackathon.
+1. **链上签名验证**
+   - 所有策略带签名
+   - 可在链上验证真实性
 
-- **Track**: Agent (AI Agent x Onchain Actions)
-- **Chain**: BSC + opBNB
-- **Category**: DeFi Automation
+2. **交易预览**
+   - 执行前显示预估结果
+   - 支持滑点设置
 
-## Files
+3. **风险提示**
+   - 自动评估池风险
+   - 显示 TVL、TVL 变化、rug 概率
 
-- `src/main.py` - Entry point
-- `src/config.py` - Configuration
-- `src/agents/strategy_agent.py` - Core logic
-- `src/tools/bsc_adapter.py` - BSC integration
-- `src/tools/defi_service.py` - DeFi data
+## 📊 数据来源
 
-## Requirements
+| 链 | RPC | 数据 API |
+|----|-----|----------|
+| BSC | https://bsc-dataseed1.binance.org | BscScan |
+| opBNB | https://opbnb-mainnet-rpc.bnbchain.org | opBNBScan |
+| Ethereum | https://eth.llamarpc.com | Etherscan |
+| Arbitrum | https://arb1.arbitrum.io/rpc | Arbiscan |
 
-- Python 3.10+
-- web3.py
-- pandas
-- requests
-- python-dotenv
+## 🎯 集成 ERC-8004
 
-## Installation
+### 注册 Agent
+```python
+# 在 ERC-8004 注册
+defi register --name "Auto-DeFi Agent" \
+  --metadata ipfs://QmXXX... \
+  --services defi-optimization,strategy-sharing
+```
+
+### 发布策略到市场
+```python
+# 发布到 ERC-8004 市场
+defi publish --strategy-id <ID> \
+  --price 0.01 ETH \
+  --description "High APY CAKE-BNB LP Strategy"
+```
+
+## 📝 命令列表
+
+| 命令 | 别名 | 描述 |
+|------|------|------|
+| `scan` | `s`, `scan-opportunities` | 扫描 DeFi 机会 |
+| `predict` | `p`, `forecast` | ML APY 预测 |
+| `trade` | `t`, `execute` | 执行交易 |
+| `share` | `sh`, `publish` | 分享策略 |
+| `follow` | `f`, `copy` | 跟单交易 |
+| `status` | `st`, `portfolio` | 投资组合状态 |
+| `leaderboard` | `lb`, `leaders` | 交易者排行榜 |
+| `register` | `reg` | ERC-8004 注册 |
+| `config` | `cfg` | 配置管理 |
+
+## 🧪 测试
 
 ```bash
-# Install dependencies
-pip install web3 pandas requests python-dotenv
+# 运行测试
+pytest tests/ -v
 
-# Configure environment
-cp .env.example .env
-# Edit .env with your settings
+# 测试覆盖率
+pytest tests/ --cov=src
 ```
 
-## License
+## 📄 许可证
 
-MIT License - OpenClaw Ecosystem
-
----
-
-**Built with 🤖 OpenClaw Agent Framework**
+MIT License

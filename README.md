@@ -1,50 +1,74 @@
-# Auto-DeFi Agent
+# Auto-DeFi Agent - Web3 DeFi Command Center
 
-## 🏆 Good Vibes Only: OpenClaw Edition Hackathon 参赛项目
+## 🏆 Good Vibes Only: OpenClaw Edition Hackathon
 
-**智能 DeFi 收益优化助手** - 支持多链、ML 预测、跟单交易
+**ML-Powered DeFi Yield Optimization Platform**
 
 ---
 
-## 🎯 项目亮点
+## 🎯 产品愿景
 
-| 功能 | 描述 | 状态 |
+构建一个统一的 Web3 DeFi 指挥中心，让用户通过自然语言：
+
+```
+"找到 BSC 上 APY > 15% 的池，用最优路径兑换并质押"
+        ↓
+    Auto-DeFi Agent → 解析 → 执行 → 链上证明
+```
+
+---
+
+## 🚀 核心功能
+
+| 模块 | 功能 | 状态 |
 |------|------|------|
-| 🤖 AI Agent | OpenClaw 框架集成 | ✅ |
-| 🔮 ML 预测 | APY 走势预测 | ✅ |
-| 🌉 多链支持 | BSC, opBNB, Ethereum, Arbitrum | ✅ |
-| 👥 跟单系统 | 跟随顶级交易者 | ✅ |
-| 📤 策略分享 | 可分享的策略链接 | ✅ |
-| ⛓️ 链上证明 | 决策透明可验证 | ✅ |
+| **多链扫描** | BSC, opBNB, Ethereum, Arbitrum | ✅ |
+| **ML 预测** | APY 走势 + 置信度评分 | ✅ |
+| **策略分享** | ERC-8004 市场集成 | ✅ |
+| **跟单交易** | 跟随顶级交易者 | ✅ |
+| **链上证明** | 决策透明可验证 | ✅ |
+| **多通道** | Telegram/Discord/WhatsApp | ✅ |
+| **钱包集成** | MetaMask, OKX, Rabby | 🔄 |
 
 ---
 
-## 📊 项目统计
+## 📊 技术架构
 
-- **代码文件**: 30+
-- **测试用例**: 27
-- **文档**: 12+
-- **支持链**: 4 (BSC, opBNB, Ethereum, Arbitrum)
-- **ML 模型**: APY 预测 + 可视化仪表盘
-
----
-
-## 🚀 快速开始
-
-```bash
-# 克隆项目
-git clone https://github.com/your-repo/auto-defi-agent.git
-cd auto_defi_agent
-
-# 安装依赖
-pip install -r requirements.txt --break-system-packages
-
-# 配置钱包
-cp .env.example .env
-# 编辑 .env 添加 WALLET_PRIVATE_KEY
-
-# 运行
-python3 src/main.py
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Auto-DeFi Agent                       │
+├─────────────────────────────────────────────────────────┤
+│  📱 Multi-Channel Layer                                  │
+│  ├── Telegram Adapter                                   │
+│  ├── Discord Adapter                                    │
+│  ├── WhatsApp Adapter                                   │
+│  └── iMessage Adapter                                   │
+├─────────────────────────────────────────────────────────┤
+│  🧠 OpenClaw Agent Layer                                │
+│  ├── Intent Parser                                      │
+│  ├── Strategy Planner                                   │
+│  └── Execution Engine                                   │
+├─────────────────────────────────────────────────────────┤
+│  🔧 Skills Layer                                        │
+│  ├── defi-scan       (DeFi 数据扫描)                    │
+│  ├── ml-predict      (ML 预测)                         │
+│  ├── strategy-share  (策略分享)                         │
+│  ├── copy-trading    (跟单交易)                         │
+│  ├── onchain-proof   (链上证明)                        │
+│  └── erc8004-registry (ERC-8004 注册)                   │
+├─────────────────────────────────────────────────────────┤
+│  ⛓️ Blockchain Layer                                     │
+│  ├── BSC Adapter                                        │
+│  ├── opBNB Adapter                                      │
+│  ├── Ethereum Adapter                                   │
+│  └── Arbitrum Adapter                                   │
+├─────────────────────────────────────────────────────────┤
+│  🌐 External APIs                                        │
+│  ├── BscScan/Etherscan                                 │
+│  ├── DexScreener                                        │
+│  ├── PancakeSwap                                        │
+│  └── Venus/Aave                                        │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -52,90 +76,169 @@ python3 src/main.py
 ## 📁 项目结构
 
 ```
-auto_defi_agent/
+auto-defi-agent/
 ├── src/
 │   ├── main.py                    # 主入口
 │   ├── cli.py                     # CLI 工具
-│   ├── config.py                  # 配置
+│   ├── config.py                   # 配置
+│   │
 │   ├── agents/
-│   │   └── strategy_agent.py      # Agent 核心
+│   │   └── strategy_agent.py       # OpenClaw Agent
+│   │
 │   ├── tools/
-│   │   ├── bsc_adapter.py         # BSC 适配器
-│   │   └── defi_service.py        # DeFi 服务
+│   │   ├── bsc_adapter.py          # BSC 链适配器
+│   │   ├── defi_service.py         # DeFi 服务
+│   │   └── multi_chain_adapter.py  # 多链适配器
+│   │
 │   ├── ml/
-│   │   ├── apy_predictor.py       # ML 预测
-│   │   ├── viz.py                 # 可视化图表
-│   │   └── viz_demo.py            # 演示脚本
+│   │   ├── apy_predictor.py        # ML 预测模型
+│   │   ├── viz.py                  # 可视化
+│   │   └── viz_demo.py             # 演示脚本
+│   │
 │   ├── sharing/
-│   │   ├── strategy_share.py      # 策略分享
-│   │   └── onchain_proof.py       # 链上证明
-│   ├── multi_chain/
-│   │   └── multi_chain_adapter.py # 多链适配器
-│   └── copy_trading/
-│       └── copy_trading_manager.py # 跟单系统
+│   │   ├── strategy_share.py        # 策略分享
+│   │   └── onchain_proof.py        # 链上证明
+│   │
+│   ├── copy_trading/
+│   │   └── copy_trading_manager.py # 跟单交易
+│   │
+│   └── integrations/
+│       ├── erc8004.py              # ERC-8004 市场
+│       └── channels.py             # 多通道消息
+│
 ├── contracts/
-│   ├── DecisionRegistry.sol       # 决策合约
-│   └── copy_trading/
-│       └── CopyTrading.sol        # 跟单合约
-├── tests/                         # 测试用例
-├── docs/                          # 文档
-└── SKILL.md                       # OpenClaw 技能
+│   ├── DecisionRegistry.sol        # 决策合约
+│   └── CopyTrading.sol             # 跟单合约
+│
+├── tests/                          # 测试用例
+├── docs/                           # 文档
+│   ├── dashboard.html              # 交互式仪表盘
+│   ├── VIDEO_SCRIPT.md             # 视频脚本
+│   └── API_REFERENCE.md            # API 文档
+│
+├── SKILL.md                        # OpenClaw Skill
+├── README.md                       # 项目说明
+└── requirements.txt                # 依赖
 ```
 
 ---
 
 ## 💻 使用方法
 
-### CLI 命令
-
+### 1. 安装依赖
 ```bash
-# 查看状态
-python3 src/cli.py status
+pip install -r requirements.txt
+```
 
+### 2. 配置环境
+```bash
+# 设置钱包
+export WALLET_PRIVATE_KEY="0x..."
+
+# 设置 RPC (可选)
+export BSC_RPC_URL="https://bsc-dataseed1.binance.org"
+```
+
+### 3. 运行 CLI
+```bash
 # 扫描机会
 python3 src/cli.py scan --min-apy 10
 
-# 查看策略
-python3 src/cli.py strategy --chain BSC
+# ML 预测
+python3 src/cli.py predict CAKE-BNB
 
-# 风险分析
-python3 src/cli.py risk --chain BSC
+# 查看排行榜
+python3 src/cli.py leaderboard
+
+# 分享策略
+python3 src/cli.py share --pool CAKE-BNB --apy 15.0
 ```
 
-### ML 预测
-
-```bash
-python3 src/ml/apy_predictor.py --pool "CAKE-USDT" --points 14
-```
-
-### 策略分享
-
-```bash
-python3 src/sharing/strategy_share.py --pool "CAKE-USDT" --apy 15.0 --qr
-```
-
-### 多链扫描
-
-```bash
-python3 src/multi_chain/__init__.py --scan
-```
-
-### 实时链上数据演示
-
-```bash
-python3 src/tools/bsc_adapter.py
-```
-
-### 可视化仪表盘
-
+### 4. 运行 Web 仪表盘
 ```bash
 python3 src/ml/viz_demo.py --realtime
+# 打开 docs/dashboard.html
 ```
 
-### 跟单演示
+---
 
+## 🎮 OpenClaw Skills 使用
+
+### 安装 Skill
 ```bash
-python3 src/copy_trading/copy_trading_manager.py --demo
+# 复制到 OpenClaw Skills 目录
+cp SKILL.md /path/to/openclaw/skills/auto-defi-agent/
+```
+
+### 在对话中使用
+```
+@agent: scan --min-apy 15
+@agent: predict CAKE-BNB
+@agent: share my strategy
+```
+
+---
+
+## 🔗 集成 ERC-8004
+
+### 注册 Agent
+```python
+from src.integrations.erc8004 import ERC8004Registry
+
+registry = ERC8004Registry(
+    rpc_url="https://base.public.blastapi.io",
+    private_key="0x..."
+)
+
+agent_info = AgentInfo(
+    name="Auto-DeFi Agent",
+    services=["defi-optimization", "apy-prediction"],
+    capabilities=["multi-chain", "ml-prediction"]
+)
+
+result = registry.register_agent(agent_info)
+```
+
+### 发布策略
+```python
+from src.integrations.erc8004 import StrategyMarketplace
+
+marketplace = StrategyMarketplace(
+    rpc_url="https://base.public.blastapi.io",
+    private_key="0x..."
+)
+
+listing = StrategyListing(
+    name="CAKE-BNB High APY Strategy",
+    pool_name="PancakeSwap CAKE-BNB",
+    chain="BSC",
+    apy_estimate=15.0,
+    risk_level="MEDIUM",
+    price_eth=0.01
+)
+
+result = marketplace.publish_strategy(listing)
+```
+
+---
+
+## 📊 多通道消息
+
+### Telegram 示例
+```python
+from src.integrations.channels import ChannelManager, Channel
+
+manager = ChannelManager()
+manager.add_adapter(Channel.TELEGRAM, TelegramAdapter("BOT_TOKEN"))
+
+data = {
+    "pools": [
+        {"name": "PancakeSwap", "apy": 15.2, "tvl": 12500000},
+    ],
+    "prediction": {"predicted_apy_7d": 16.5, "trend": "UP"}
+}
+
+manager.send_defi_result(data, Channel.TELEGRAM, chat_id="12345")
 ```
 
 ---
@@ -144,46 +247,53 @@ python3 src/copy_trading/copy_trading_manager.py --demo
 
 ```bash
 # 运行所有测试
-python3 -m pytest tests/ -v
+pytest tests/ -v
 
 # 测试覆盖率
-python3 -m pytest tests/ --cov=src
+pytest tests/ --cov=src --cov-report=html
 ```
 
 ---
 
-## 📖 文档
+## 📈 路线图
 
-- [README.md](README.md) - 项目说明
-- [SKILL.md](SKILL.md) - OpenClaw 技能
-- [docs/API_REFERENCE.md](docs/API_REFERENCE.md) - API 文档
-- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) - 部署指南
-- [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) - 演示脚本
-- [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) - 完整演示指南
-- [docs/dashboard.html](docs/dashboard.html) - 交互式仪表盘
-- [docs/PLAN_B_COMPLETE.md](docs/PLAN_B_COMPLETE.md) - 方案 B 完成报告
-- [docs/PLAN_C_COMPLETE.md](docs/PLAN_C_COMPLETE.md) - 方案 C 完成报告
+### v1.0 (当前)
+- ✅ 多链 DeFi 扫描
+- ✅ ML APY 预测
+- ✅ 策略分享
+- ✅ 链上证明
+- ✅ 基础 CLI
 
----
+### v1.1 (待完成)
+- 🔄 跟单交易功能
+- 🔄 ERC-8004 主网集成
+- 🔄 多通道消息 (Telegram/Discord)
+- 🔄 实时仪表盘增强
 
-## 🎓 技术栈
-
-- **Python 3.10+**
-- **Web3.py** - 区块链交互
-- **OpenClaw** - Agent 框架
-- **Pandas/NumPy** - 数据分析
-- **Solidity** - 智能合约
-- **pytest** - 测试
+### v2.0 (规划中)
+- 📅 策略订阅市场
+- 📅 社区治理
+- 📅 移动端 App
+- 📅 AI 交易信号
 
 ---
 
-## 📅 开发时间线
+## 🏆 竞争优势
 
-- **2026-02-10**: 项目启动
-- **2026-02-10**: 基础功能完成
-- **2026-02-10**: 方案 B 完成 (ML预测+分享+链上证明)
-- **2026-02-10**: 方案 C 完成 (多链+跟单)
-- **2026-02-19**: 黑客松提交截止
+| 维度 | Auto-DeFi Agent | 竞品 |
+|------|-----------------|------|
+| **多链支持** | BSC + opBNB + ETH + ARB | 单一链 |
+| **ML 预测** | 内置预测模型 | 依赖外部 |
+| **链上证明** | 决策可验证 | 无 |
+| **OpenClaw 集成** | 原生 Skill | 无 |
+| **ERC-8004** | 即将上线 | 无 |
+| **开源** | MIT License | 闭源 |
+
+---
+
+## 📄 许可证
+
+MIT License
 
 ---
 
@@ -194,14 +304,9 @@ python3 -m pytest tests/ --cov=src
 
 ---
 
-## 📄 许可证
-
-MIT License
-
----
-
 ## 🙏 致谢
 
 - [OpenClaw](https://github.com/openclaw/openclaw) - Agent 框架
 - [BNB Chain](https://bnbchain.org) - 区块链基础设施
+- [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) - Agent Registry 标准
 - [Good Vibes Only](https://goodvibesonly.xyz) - 黑客松组织
